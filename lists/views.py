@@ -1,3 +1,8 @@
 from django.shortcuts import render
+#from django.Http import HttpResponse
 
-# Create your views here.
+#def home_page(request):
+#    return HttpResponse ("Test")
+
+def home_page():
+    pass
