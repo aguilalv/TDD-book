@@ -40,6 +40,8 @@ class NewVisitorTest(LiveServerTestCase):
         # When she hits enter, she is taken to a new URL, and now the page lists
         # "1: Buy peacock feathers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
+        import time
+        time.sleep(1)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
@@ -74,6 +76,8 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # Francis gets his own unique URL
+        import time
+        time.sleep(1)
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url,'/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)
