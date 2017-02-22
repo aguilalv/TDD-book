@@ -1,3 +1,9 @@
+CHEAT-SHEET:
+============
+- grep -E "class|def" app/tests.py - Command to check the list of unit tests
+
+TODOs:
+======
 - Adjust model so that items are associated with different lists
 - Add unique URLs for each list
 - Add a URL for creating a new list via POST
