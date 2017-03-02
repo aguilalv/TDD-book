@@ -1,0 +1,4 @@
+Django==1.10.5
+nose2==0.6.5
+selenium==3.0.2
+six==1.10.0
