@@ -59,7 +59,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # "1: Buy peacock feathers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
         import time
-        time.sleep(1)
+        time.sleep(2)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
@@ -70,7 +70,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
         import time
-        time.sleep(1)
+        time.sleep(2)
 
         # The page updates again and now shows both items on her list
         self.check_for_row_in_list_table('1: Buy peacock feathers')
@@ -97,7 +97,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # Francis gets his own unique URL
         import time
-        time.sleep(1)
+        time.sleep(2)
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url,'/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)
@@ -126,7 +126,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox.send_keys('testing')
         inputbox.send_keys(Keys.ENTER)
         import time
-        time.sleep(1)
+        time.sleep(2)
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(
             inputbox.location['x'] + inputbox.size['width'] / 2,
