@@ -16,8 +16,11 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     @classmethod
     def tearDownClass(cls):
-        if cls.server_url == cls.live_server_url:
-            super().tearDownClass()
+        for arg in sys.argv:
+            if 'liveserver' in arg:
+                cls.server_url = 'http://'+ arg.split('=')[1]
+#                if cls.server_url == cls.live_server_url:
+#                    super().tearDownClass()
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -66,6 +69,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
+        import time
+        time.sleep(1)
 
         # The page updates again and now shows both items on her list
         self.check_for_row_in_list_table('1: Buy peacock feathers')
