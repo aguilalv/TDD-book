@@ -2,7 +2,13 @@ CHEAT-SHEET:
 ============
 - grep -E "class|def" app/tests.py - Command to check the list of unit tests
 
+GUIDELINES:
+===========
+- Flow is to create a "broken state" (a test with an expected fail), do the minimum code to go to a "working state" (all tests pass) and then refactor the code as needed (refactor tests or app code but not both at the same time)
+
+- One file (and one class) per user story
+- One file for each of test_views / test_models / test_templates
+
 TODOs:
 ======
-- Add URLs for adding a new item to an existing list via POST
-- Refactor away some duplication in urls.py
+- Eliminate hardcoded URLs from views.py
