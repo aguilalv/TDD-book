@@ -13,3 +13,4 @@ TODOs:
 ======
 - Eliminate hardcoded URLs from views.py
 - Eliminate hardcoded URLs from list.html and home.html
+- Remove duplication of validation logic in views
