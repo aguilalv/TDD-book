@@ -4,10 +4,19 @@ CHEAT-SHEET:
 
 GUIDELINES:
 ===========
-- Flow is to create a "broken state" (a test with an expected fail), do the minimum code to go to a "working state" (all tests pass) and then refactor the code as needed (refactor tests or app code but not both at the same time)
 
+## Test Driven Development
+- Flow is to create a "broken state" (a test with an expected fail), do the minimum code to go to a "working state" (all tests pass) and then refactor the code as needed (refactor tests or app code but not both at the same time)
+    - Don´t forget the 'Refactor' in Red, Green, Refactor
+    - The whole point of having tests is to allow refactoring of the code
+
+## Test folder structure:
 - One file (and one class) per user story
+- Group Unit Tests for an app inside a tests folder **with a __init__.py file**
 - One file for each of test_views / test_models / test_templates
+
+## Django
+- Good practice to include as much validation as possible in the models (everything ends in single database so best place to check). Use your_model_object.***full_clean()*** in views to run all validations and it will raise an exception if any fails
 
 TODOs:
 ======
