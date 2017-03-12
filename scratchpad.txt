@@ -20,4 +20,3 @@ GUIDELINES:
 
 TODOs:
 ======
-- Remove duplication of validation logic in views
