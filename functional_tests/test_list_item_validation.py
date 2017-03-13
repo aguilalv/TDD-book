@@ -48,10 +48,13 @@ class ItemValidationTest(FunctionalTest):
         # Edith goes to the home page and starts a new list
         self.browser.get(self.server_url)
         self.get_item_input_box().send_keys('Buy wellies'+Keys.ENTER)
+        time.sleep(2)
+        
         self.check_for_row_in_list_table('1: Buy wellies')
 
         # She accidentally tries to enter a duplicate item
         self.get_item_input_box().send_keys('Buy wellies'+Keys.ENTER)
+        time.sleep(2)
 
         # She sees a helpful error message
         self.check_for_row_in_list_table('1: Buy wellies')
