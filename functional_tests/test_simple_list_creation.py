@@ -3,6 +3,7 @@ from .base import FunctionalTest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+from time import sleep
 
 class NewVisitorTest(FunctionalTest):
 
@@ -30,8 +31,7 @@ class NewVisitorTest(FunctionalTest):
         # When she hits enter, she is taken to a new URL, and now the page lists
         # "1: Buy peacock feathers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
-        import time
-        time.sleep(2)
+        sleep(2)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
         self.check_for_row_in_list_table('1: Buy peacock feathers')
@@ -40,9 +40,9 @@ class NewVisitorTest(FunctionalTest):
         # enters "Use peacock feathers to make a fly" (Edith is very methodical)
         inputbox = self.get_item_input_box()
         inputbox.send_keys('Use peacock feathers to make a fly')
+        sleep(2)
         inputbox.send_keys(Keys.ENTER)
-        import time
-        time.sleep(2)
+        sleep(2)
 
         # The page updates again and now shows both items on her list
         self.check_for_row_in_list_table('1: Buy peacock feathers')
@@ -68,8 +68,7 @@ class NewVisitorTest(FunctionalTest):
         inputbox.send_keys(Keys.ENTER)
 
         # Francis gets his own unique URL
-        import time
-        time.sleep(2)
+        sleep(2)
         francis_list_url = self.browser.current_url
         self.assertRegex(francis_list_url,'/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)

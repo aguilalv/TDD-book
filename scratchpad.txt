@@ -15,6 +15,16 @@ GUIDELINES:
 - Group Unit Tests for an app inside a tests folder **with a __init__.py file**
 - One file for each of test_views / test_models / test_templates
 
+## What to test for **views**
+
+1. Check the template used
+2. Check each element in the template context
+3. Check any objects are the correct ones, or querysets have the correct objects
+4. Check any forms are the correct class
+5. Checl any template logic (e.g. when inserting in a list it inserts in the right list and not in another list)
+6. For views that handle POST requests check both the valid and invalid case
+7. Sanity check that form is rendered and its errors displayed
+
 ## Django
 - Good practice to include as much validation as possible in the models (everything ends in single database so best place to check). Use your_model_object.***full_clean()*** in views to run all validations and it will raise an exception if any fails
 
