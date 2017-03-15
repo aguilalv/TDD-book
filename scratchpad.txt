@@ -30,3 +30,8 @@ GUIDELINES:
 
 TODOs:
 ======
+
+* How to send emails
+* Generating and recognising unique tokens
+* How to authenticate someone in Django
+* What steps will the user have to go through?
