@@ -34,7 +34,7 @@ class NewVisitorTest(FunctionalTest):
         sleep(2)
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting her to add another item. she
         # enters "Use peacock feathers to make a fly" (Edith is very methodical)
@@ -42,11 +42,11 @@ class NewVisitorTest(FunctionalTest):
         inputbox.send_keys('Use peacock feathers to make a fly')
         sleep(2)
         inputbox.send_keys(Keys.ENTER)
-        sleep(2)
+#        sleep(2)
 
         # The page updates again and now shows both items on her list
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
-        self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
+        self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
         
         # Now a new user, Francis, comes along to the site
 
