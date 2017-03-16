@@ -1,6 +1,8 @@
 CHEAT-SHEET:
 ============
+
 - grep -E "class|def" app/tests.py - Command to check the list of unit tests
+- from unittest.mock import Mock - A magical object that responds to any request for an attribute or method call with other mocks. You can configure it to return specific values for its call and allows you to inspect what it was called with.
 
 GUIDELINES:
 ===========
