@@ -2,8 +2,6 @@ from .base import FunctionalTest
 from unittest import skip
 from selenium.webdriver.common.keys import Keys
 
-import time
-
 class ItemValidationTest(FunctionalTest):
 
     def get_error_element(self):
@@ -16,12 +14,12 @@ class ItemValidationTest(FunctionalTest):
         inputbox = self.get_item_input_box()
         inputbox.send_keys(Keys.ENTER)
 
-        time.sleep(2)
-
         # The home page refreshes, and there is an error message sayong
         # that list items cannot be blank
-        error = self.get_error_element()
-        self.assertEqual(error.text, "You can't have an empty list item")
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_css_selector('.has-error').text,
+            "You can't have an empty list item"
+        ))
 
         # She tries again with some text for the item, which now works
         inputbox = self.get_item_input_box()
@@ -34,8 +32,10 @@ class ItemValidationTest(FunctionalTest):
 
         # She receives a similar warning on the list page
         self.wait_for_row_in_list_table('1: Buy milk')
-        error = self.get_error_element()
-        self.assertEqual(error.text, "You can't have an empty list item")
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_css_selector('.has-error').text,
+            "You can't have an empty list item"
+        ))
 
         # And she can correct it by filing some text in
         inputbox = self.get_item_input_box()
@@ -56,8 +56,10 @@ class ItemValidationTest(FunctionalTest):
 
         # She sees a helpful error message
         self.wait_for_row_in_list_table('1: Buy wellies')
-        error = self.get_error_element()
-        self.assertEqual(error.text, "You've already got this in your list")
+        self.wait_for(lambda: self.assertEqual(
+            self.browser.find_element_by_css_selector('.has-error').text,
+            "You've already got this in your list"
+        ))
 
     @skip
     def test_error_messages_are_cleared_on_input(self):
