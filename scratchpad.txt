@@ -1,3 +1,9 @@
+BOOKMARK
+========
+
+* Chapter on Mocking
+* ...
+
 CHEAT-SHEET:
 ============
 
@@ -11,6 +17,8 @@ GUIDELINES:
 - Flow is to create a "broken state" (a test with an expected fail), do the minimum code to go to a "working state" (all tests pass) and then refactor the code as needed (refactor tests or app code but not both at the same time)
     - Don´t forget the 'Refactor' in Red, Green, Refactor
     - The whole point of having tests is to allow refactoring of the code
+- For unit tests, think about all the possible flows of the logic and test all of them (anything else? border cases?)
+
 
 ## Test folder structure:
 - One file (and one class) per user story
@@ -26,6 +34,11 @@ GUIDELINES:
 5. Checl any template logic (e.g. when inserting in a list it inserts in the right list and not in another list)
 6. For views that handle POST requests check both the valid and invalid case
 7. Sanity check that form is rendered and its errors displayed
+
+## Testing rules of thumb
+
+- One if in the code normally means 1 extra test is required
+- One try/except in the code normally means 1 extra test is required
 
 ## Django
 - Good practice to include as much validation as possible in the models (everything ends in single database so best place to check). Use your_model_object.***full_clean()*** in views to run all validations and it will raise an exception if any fails

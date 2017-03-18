@@ -124,6 +124,15 @@ STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
 
 # Define a customised model to store information about out users in the database ??
 AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.PasswordlessAuthenticationBackend',
+]
+
+# Settings to send emails from Django
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'alvaro.aguilar.lopez@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = True
 
 
 #LOGGING = {
