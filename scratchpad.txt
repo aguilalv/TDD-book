@@ -2,22 +2,30 @@ CHEAT-SHEET:
 ============
 
 - grep -E "class|def" app/tests.py - Command to check the list of unit tests
-- from unittest.mock import Mock - A magical object that responds to any request for an attribute or method call with other mocks. You can configure it to return specific values for its call and allows you to inspect what it was called with.
+- from unittest.mock import Mock - A magical object that responds to any request for an attribute or method call with other mocks. You can configure it to return specific values for its call and allows you to inspect what it was called with. Check what is the decorator way to use it @patch??
 
 GUIDELINES:
 ===========
 
 ## Test Driven Development
+
 - Flow is to create a "broken state" (a test with an expected fail), do the minimum code to go to a "working state" (all tests pass) and then refactor the code as needed (refactor tests or app code but not both at the same time)
     - Don´t forget the 'Refactor' in Red, Green, Refactor
     - The whole point of having tests is to allow refactoring of the code
 - For unit tests, think about all the possible flows of the logic and test all of them (anything else? border cases?)
 
-
 ## Test folder structure:
+
 - One file (and one class) per user story
 - Group Unit Tests for an app inside a tests folder **with a __init__.py file**
 - One file for each of test_views / test_models / test_templates
+
+## Concepts
+
+* Mocks:
+* Fixtures:
+    * When we pre-populate the database with test data in order to run a test (e.g. pre-populate the database with a session so our test runs as an auto-logged-in)
+    * When models start getting big pre-populating with Django ORM (your models) can be cumbersome. A useful tool for this is factory_boy
 
 ## What to test for **views**
 
@@ -35,10 +43,16 @@ GUIDELINES:
 - One try/except in the code normally means 1 extra test is required
 
 ## Django
+
 - Good practice to include as much validation as possible in the models (everything ends in single database so best place to check). Use your_model_object.***full_clean()*** in views to run all validations and it will raise an exception if any fails
+
+## Functional programming concepts
+
+* **Helper function** is a function that takes another function as an argument and then runs its own code (involving calling the argument function, probably) ) wait_for function that takes a function and calls it in a loop until it returns what it´s supposed
+* **Decorator** is a function that  receives a function as argument but doesn´t execute any code itself, it returns a changed version of the function it was given
 
 TODOs:
 ======
 
-* Clean up wait_for stuff in base.py
 * Review all recaps at the end of each chapter and turn into a cheatsheet
+
